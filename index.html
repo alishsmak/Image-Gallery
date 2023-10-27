@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="vue-slider">
+        <div class="pictures">
+            <span class="main">
+                <a v-for="(item, index) in items">
+                    <img :src="item.img" @click="zoomToggle(), changeActivePic(index)"
+                    :class="{ active: index==inedxOfActive ? true : false }">
+                    <p class="title">{{ item.title }}</p>
+                    <p class="author">{{ item.author }}</p>
+                </a>
+            </span>
+        </div>
+        <div v-show="show" class="picture">
+            <span @click="zoomToggle()">&times;</span>
+            <img :src="activePic">
+        </div>
+    </div>
+
+    <script>
+        const VueSlider = {
+            data() {
+                return {
+                    inedxOfActive: 0,
+                    activePic: 'images/img1.jpg',
+                    show: false,
+                    items: [
+                        {img:'images/img1.jpg', title: "The Starry Night", author: "Vincent van Gogh"},
+                        {img:'images/img2.jpg', title: "The Creation of Adam", author: "Michelangelo"},
+                        {img:'images/img3.jpg', title: "The Last Supper", author: " Leonardo da Vinci"},
+                        {img:'images/img4.jpg', title: "Girl with a Pearl Earring", author: "Johannes Vermeer"},
+                        {img:'images/img5.jpg', title: "The Ninth Wave", author: "Russian Museum"},
+                        {img:'images/img6.jpg', title: "The Birth of Venus", author: "Sandro Botticelli"},
+                        {img:'images/img7.jpg', title: "The Japanese Footbridge and the Water Lily Pool, Giverny", author: " Claude Monet"},
+                        {img:'images/img8.jpg', title: "Cafe Terrace at Night", author: "Vincent van Gogh"},
+                        {img:'images/img9.jpg', title: "The Night Watch", author: "Rembrandt "},
+                        {img:'images/img10.jpg', title: "Wanderer above the Sea of Fog", author: "Caspar David Friedrich"},
+                    ]
+                }
+            },
+            methods: {
+                changeActivePic(index) {
+                    this.activePic = this.items[index].img;
+                    this.inedxOfActive = index;
+                },
+
+                zoomToggle() {
+                    this.show = !this.show;
+                }
+            }
+        }
+        const vm = Vue.createApp(VueSlider).mount('#vue-slider');
+    </script>
+</body>
+</html>
