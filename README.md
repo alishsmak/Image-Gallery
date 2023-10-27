@@ -24,4 +24,4 @@ To complete this task, you should adhere to the following requirements:
 * Document your code and provide clear instructions on how to use your gallery.
 ## Example
 Here's a basic example of what the gallery might look like:
-![example](https://drive.google.com/file/d/1z5zzKMGqbAa__fslyLrzUyDUk_7qPwJh/view?usp=sharing)
+![screenshot](https://github.com/alishsmak/Image-Gallery/assets/77477198/4586bd51-3882-43de-b2b9-1a0f2202ca5a)
